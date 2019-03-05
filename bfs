@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+int g[10000][10000];
+bool visited[10000];
+int main (){
+ 
+                int v,e,x,y;
+                cin>>v>>e;
+                while(e--){
+                cin>>x>>y;
+                g[x][y]=g[y][x]=1;     
+                }
+                int s;
+                cin>>s;
+                visited[s]=true;
+                queue<int> q;
+                q.push(s);
+                while(!q.empty()){
+                        s=q.front(); q.pop();
+                        cout<<s<<",";
+                        for(int i=1;i<v;i++){
+                                if(g[s][i]&&!visited[i]){
+                                        q.push(i);
+                                        visited[i]=true;
+                                }
+                        }
+                }
+        return 0;
+}
